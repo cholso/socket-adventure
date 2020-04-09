@@ -184,6 +184,8 @@ class Server(object):
         """
 
         # TODO: YOUR CODE HERE
+
+        argument = argument[:-1]
         self.output_buffer = ('You say, "{}"').format(argument)
 
     def quit(self, argument):
@@ -217,20 +219,17 @@ class Server(object):
 
         # TODO: YOUR CODE HERE
 
-        if self.input_buffer == "quit\n":
-            self.quit(None)
-
         commands = self.input_buffer.split(" ")
 
         command = commands.pop(0)
         argument = " ".join(commands)
-
-        print("Starting route method")
-        print("This is your command: {}".format(command))
-        print("This is your argument: {}".format(argument))
-
     
-        if command == "move":
+        print("This is the command: {}".format(command))
+        
+
+        if command == "quit\n":
+            self.quit(None)
+        elif command == "move":
             self.move(argument)
         elif command == "say":
             self.say(argument)
